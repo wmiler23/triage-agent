@@ -4,7 +4,7 @@ terraform {
     aws = { source = "hashicorp/aws", version = "~> 5.0" }
   }
   # Remote state, isolated per environment via the key.
-  backend "s3" {}   # configured at init time (see CD workflow)
+  backend "s3" {} # configured at init time (see CD workflow)
 }
 
 provider "aws" { region = var.aws_region }
@@ -17,7 +17,7 @@ resource "aws_iam_role" "lambda" {
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
     Statement = [{
-      Effect = "Allow", Action = "sts:AssumeRole",
+      Effect    = "Allow", Action = "sts:AssumeRole",
       Principal = { Service = "lambda.amazonaws.com" }
     }]
   })
